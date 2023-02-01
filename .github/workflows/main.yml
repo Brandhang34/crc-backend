@@ -8,33 +8,15 @@ on:
 
 jobs:
   deploy:
-@@ -12,20 +12,19 @@ jobs:
-      matrix:
-        python-version: ["2.7", "3.7", "3.8", "3.9", "3.10"]
-    steps:
-    - name: checkout
-      uses: actions/checkout@master
-
-   - name: Set up Python ${{ matrix.python-version }}
-     uses: actions/setup-python@v4
-     with:
-       python-version: ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+      steps:
       - name: checkout
         uses: actions/checkout@master
 
-    - name: Instal dependencies
-      run: |
-        pip install pytest
-        pip install pytest-conv
-        pip install requests
-    - name: Test HTTP Enpoints from AWS Lambda functions
-      run: |
-        cd ../../PythonTests/
-        python3 -m pytest -v
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python "3.9"
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.9"
 
       - name: Instal dependencies
         run: |
