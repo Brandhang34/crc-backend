@@ -1,0 +1,9 @@
+# Ignore unimportant terraform files
+Terraform/.Terraform
+Terraform/.terraform.lock.hcl
+Terraform/terraform.tfstate.backup
+Terraform/terraform.tfstate
+
+# Generated ZIP files
+LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.zip
+LambdaFunctions/VisitCountFunction/lambda_function.zip

@@ -10,7 +10,11 @@ The [AWS Resume Challenge](https://cloudresumechallenge.dev/docs/the-challenge/a
 
 In this README, I will go over how I created the backend for the AWS Resume Challenge. The main part of the backend portion of the challenge was to implement an API in which will increment the number of users visited on the webpage to DynamoDB.
 
-![Backend infrastructure](README_IMGs/backend-architecture.png)
+<p align="center">
+  <img src="README_IMGs/backend-architecture.png"/>
+</p>
+
+<!-- ![Backend infrastructure](README_IMGs/backend-architecture.png) -->
 
 #### User Counter
 
@@ -24,12 +28,10 @@ In this README, I will go over how I created the backend for the AWS Resume Chal
 2. The Lambda function takes those values and creates a message that is sent to my email. Since I use google, I had to implement their SMTP server so that the sending email actually sends the message.
 3. All of this information is sent to Amazon Simple Email Service (SES) allowing the emails being sent from a sender, to the receiver email(me).
 
-
 ## Summary
 
 Here’s the frontend/portflio: [brandonhang.co](https://brandonhang.co)
 
 I thought that this part of the challenge was pretty difficult. Incorportaing the lambda functions were fairly easy, but trying to automate everything using terraform and github actions was some thing that was new to me. I believe that the learning process was very helpful and the thought of developing the IaC skills will be essential in my career. Although the email form wasn't apart of the challenge, I wanted to add the extra bonus to my website and gain more insight on lambda and other possible AWS services. This challenge has taught me a lot and I hope to implement some these practices into future projects or work.
-
 
 Thanks for reading! I have the frontend portion of this project linked in this [repository](https://github.com/Brandhang34/crc-frontend)
