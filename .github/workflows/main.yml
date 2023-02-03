@@ -51,7 +51,7 @@ jobs:
         run: |
           pwd
           ls
-          cd ../Terraform/
+          cd Terraform/
           echo "** Running Terraform Init**"
           terraform init
 
