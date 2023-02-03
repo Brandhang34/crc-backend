@@ -29,45 +29,27 @@ jobs:
           cd PythonTests/
           python3 -m pytest -v
 
-name: Terraform AWS Workflow
+      - name: Terraform Validation and Build
+        uses: actions/checkout@v2.5.0
 
-on:
-  workflow_dispatch:
-    # Inputs the workflow expects.
-    inputs:
-      tfpath:
-        description: 'TF File Path'     
-        required: false
-        default: 'Terraform/'
+      - name: Configure AWS Credentials Action For GitHub Actions
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Setup Terraform CLI
+        uses: hashicorp/setup-terraform@v2.0.2
 
-jobs:
-  tf_code_check:
-    name: Terraform Validation and Build
-    runs-on: ubuntu-latest
+      - name: Terraform init, plan and apply
+        run: |
+          echo `pwd`
+          echo "tfpath ${{ github.event.inputs.tfpath }}"
+          echo "** Running Terraform Init**"
+          terraform init
 
-    if:  ${{ inputs.tfpath }} 
-    steps:
-    - uses: actions/checkout@v2.5.0
+          echo "** Running Terraform Validate**"
+          terraform validate
 
-
-    - name: Configure AWS Credentials Action For GitHub Actions
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-    - name: Setup Terraform CLI
-      uses: hashicorp/setup-terraform@v2.0.2
-
-    - name: Terraform init, plan and apply
-      run: |
-        echo `pwd`
-        echo "tfpath ${{ github.event.inputs.tfpath }}"
-        echo "** Running Terraform Init**"
-        terraform init
-
-        echo "** Running Terraform Validate**"
-        terraform validate
-
-        echo "** Running Terraform Plan**"
-        terraform plan
+          echo "** Running Terraform Plan**"
+          terraform plan
