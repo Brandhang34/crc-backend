@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - master
+        # Inputs the workflow expects.
+    inputs:
+      tfpath:
+        description: "TF File Path"
+        required: false
+        default: "Terraform/"
 
 jobs:
   deploy:
@@ -44,7 +50,7 @@ jobs:
       - name: Terraform init, plan and apply
         run: |
           echo `pwd`
-          echo "tfpath ${{ github.event.inputs.tfpath }}"
+          echo "tfpath "
           echo "** Running Terraform Init**"
           terraform init
 
