@@ -3,6 +3,7 @@ Terraform/.Terraform
 Terraform/.terraform.lock.hcl
 Terraform/terraform.tfstate.backup
 Terraform/terraform.tfstate
+Terraform/providers.tf
 
 # Generated ZIP files
 LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.zip

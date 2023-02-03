@@ -56,8 +56,8 @@ resource "aws_lambda_function" "contact_form_lambda_func" {
     filename                       = "../LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.zip"
     function_name                  = "Contact_Form_Lambda_Function"
     role                           = aws_iam_role.contact_form_lambda_role.arn
-    handler                        = "lambda_function.lambda_handler"
-    runtime                        = "python3.9"
+    handler                        = "PortfolioSESLambdaFunction.handler"
+    runtime                        = "nodejs16.x"
     depends_on                     = [aws_iam_role_policy_attachment.attach_contact_form_iam_policy_to_iam_role]
     environment {
     variables = {

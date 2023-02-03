@@ -1,3 +1,4 @@
+# ************************ Create DynamoDB ************************
 resource "aws_dynamodb_table_item" "ddbtable" {
   table_name = aws_dynamodb_table.ddbtable.name
   hash_key   = aws_dynamodb_table.ddbtable.hash_key
@@ -46,18 +47,17 @@ resource "aws_iam_policy" "user_counter_iam_policy_for_lambda" {
  description  = "Allow get and put requests to DynamoDB via lambda"
  policy = <<EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "dynamodb:PutItem",
-                "dynamodb:GetItem"
-            ],
-            "Resource": "arn:aws:dynamodb:us-east-1:513282148621:table/Portfolio_VisitCounter"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:*",
+        "dynamodb:*"
+      ],
+      "Resource": "${aws_dynamodb_table.ddbtable.arn}"
+    }
+  ]
 }
 EOF
 }
