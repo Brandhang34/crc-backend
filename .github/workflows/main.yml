@@ -60,3 +60,6 @@ jobs:
 
           echo "** Running Terraform Plan**"
           terraform plan
+
+          echo "** Running Terraform Apply**"
+          terraform apply -auto-approve
