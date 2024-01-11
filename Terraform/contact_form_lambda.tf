@@ -57,7 +57,7 @@ resource "aws_lambda_function" "contact_form_lambda_func" {
     function_name                  = "Contact_Form_Lambda_Function"
     role                           = aws_iam_role.contact_form_lambda_role.arn
     handler                        = "PortfolioSESLambdaFunction.handler"
-    runtime                        = "nodejs16.x"
+    runtime                        = "nodejs20.x"
     depends_on                     = [aws_iam_role_policy_attachment.attach_contact_form_iam_policy_to_iam_role]
     environment {
     variables = {
