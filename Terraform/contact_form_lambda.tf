@@ -44,11 +44,9 @@ resource "aws_iam_role_policy_attachment" "attach_contact_form_iam_policy_to_iam
     policy_arn  = aws_iam_policy.contact_form_iam_policy_for_lambda.arn
 }
 
-# TODO Change "zip_the_javascript_code" to something else
-
-data "archive_file" "zip_the_contact_form_javascript_code" {
+data "archive_file" "zip_the_contact_form_python_code" {
     type        = "zip"
-    source_file  = "../LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.js"
+    source_file  = "../LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.py"
     output_path = "../LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.zip"
 }
 
@@ -56,8 +54,8 @@ resource "aws_lambda_function" "contact_form_lambda_func" {
     filename                       = "../LambdaFunctions/SimpleEmailServiceFunction/PortfolioSESLambdaFunction.zip"
     function_name                  = "Contact_Form_Lambda_Function"
     role                           = aws_iam_role.contact_form_lambda_role.arn
-    handler                        = "PortfolioSESLambdaFunction.handler"
-    runtime                        = "nodejs20.x"
+    handler                        = "PortfolioSESLambdaFunction.lambda_handler"
+    runtime                        = "python3.12"
     depends_on                     = [aws_iam_role_policy_attachment.attach_contact_form_iam_policy_to_iam_role]
     environment {
     variables = {
