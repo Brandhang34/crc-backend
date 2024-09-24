@@ -35,3 +35,7 @@ Here’s the frontend/portflio: [brandonhang.co](https://brandonhang.co)
 I thought that this part of the challenge was pretty difficult. Incorportaing the lambda functions were fairly easy, but trying to automate everything using terraform and github actions was some thing that was new to me. I believe that the learning process was very helpful and the thought of developing the IaC skills will be essential in my career. Although the email form wasn't apart of the challenge, I wanted to add the extra bonus to my website and gain more insight on lambda and other possible AWS services. This challenge has taught me a lot and I hope to implement some these practices into future projects or work.
 
 Thanks for reading! I have the frontend portion of this project linked in this [repository](https://github.com/Brandhang34/crc-frontend)
+
+## Future additions:
+[ ] Terraform state file in S3
+[ ] Prevent incremental change to the user counter after refreshing the page
